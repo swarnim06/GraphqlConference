@@ -1,0 +1,44 @@
+{
+  "type": "bulk",
+  "args": [
+    {
+      "type": "create_object_relationship",
+      "args": {
+        "name": "personBypersonId",
+        "table": {
+          "name": "books",
+          "schema": "public"
+        },
+        "using": {
+          "foreign_key_constraint_on": "person_id"
+        }
+      }
+    },
+    {
+      "type": "create_object_relationship",
+      "args": {
+        "name": "genreBygenreId",
+        "table": {
+          "name": "books",
+          "schema": "public"
+        },
+        "using": {
+          "foreign_key_constraint_on": "genre_id"
+        }
+      }
+    },
+    {
+      "type": "create_object_relationship",
+      "args": {
+        "name": "personBypersonId",
+        "table": {
+          "name": "fitness",
+          "schema": "app"
+        },
+        "using": {
+          "foreign_key_constraint_on": "person_id"
+        }
+      }
+    }
+  ]
+}

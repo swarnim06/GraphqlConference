@@ -1,0 +1,29 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data_3:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d/
+    environment:
+      POSTGRES_USER: 'user'
+      POSTGRES_PASSWORD: 'password'
+      POSTGRES_DB: 'persons'
+  graphql-engine:
+    image: hasura/graphql-engine:v1.0.0-beta.6
+    ports:
+    - "1234:8080"
+    links:
+    - "postgres"
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://user:password@host.docker.internal:5432/persons
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      ## uncomment next line to set an admin secret
+      HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+volumes:
+  db_data_3:

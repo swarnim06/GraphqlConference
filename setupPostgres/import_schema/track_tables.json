@@ -1,0 +1,33 @@
+{
+  "type": "bulk",
+  "args": [
+    {
+      "type": "add_existing_table_or_view",
+      "args": {
+        "name": "books",
+        "schema": "public"
+      }
+    },
+    {
+      "type": "add_existing_table_or_view",
+      "args": {
+        "name": "genre",
+        "schema": "public"
+      }
+    },
+    {
+      "type": "add_existing_table_or_view",
+      "args": {
+        "name": "persons",
+        "schema": "public"
+      }
+    },
+    {
+      "type": "add_existing_table_or_view",
+      "args": {
+        "name": "fitness",
+        "schema": "app"
+      }
+    }
+  ]
+}
